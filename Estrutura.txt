@@ -1,0 +1,25 @@
+02:29 06/10/2025
+
+crypchat-firebase/	 # Raiz do projeto
+│
+├── .firebaserc         # Arquivo que liga este diretório ao seu projeto Firebase na nuvem
+├── firebase.json       # O "cérebro" do deploy: configura Hosting, Functions e Firestore
+│
+├── functions/          # Backend
+│   ├── node_modules/
+│   ├── index.js        # Ponto de entrada da Cloud Functions
+│   └── package.json    # Dependências SOMENTE do backend
+│
+├── public/             # Arquivos estáticos do frontend (ícone, etc.)
+├── src/                # Frontend (React)
+│   ├── components/
+│   ├── context/        
+│   ├── pages/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css       # Onde configuramos o Tailwind
+│
+├── .gitignore          
+├── index.html          # Ponto de entrada do HTML do Vite
+├── package.json        # Dependências e scripts do Frontend
+└── vite.config.js      # Configurações do Vite
