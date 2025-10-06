@@ -1,5 +1,18 @@
 02:29 06/10/2025
 
+Ecossistema Google Firebase/
+├─────Frontend (O que roda no navegador do usuário)
+│		│
+│		├───── Código React/Vite (A interface e a lógica visual)
+│		├───── Firebase Hosting  (O serviço que entrega o código para o navegador)
+│
+├─────	Backend (O que roda na nuvem do Google)
+│		│
+	├─────	 Firestore (Banco de Dados)
+	├─────	 Cloud Functions (Lógica de Servidor segura)
+
+-----------------------------------------------------------------------------------
+
 crypchat-firebase/	 # Raiz do projeto
 │
 ├── .firebaserc         # Arquivo que liga este diretório ao seu projeto Firebase na nuvem
@@ -7,7 +20,7 @@ crypchat-firebase/	 # Raiz do projeto
 │
 ├── functions/          # Backend
 │   ├── node_modules/
-│   ├── src/index.ts # Ponto de entrada da Cloud Functions (em TypeScript)
+│   ├── src/index.ts    # Ponto de entrada da Cloud Functions (em TypeScript)
 │   └── package.json    # Dependências SOMENTE do backend
 │
 ├── public/             # Arquivos estáticos do frontend (ícone, etc.)
