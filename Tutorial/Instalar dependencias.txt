@@ -2,24 +2,20 @@
 
 --- INSTALAR AMBIENTE E PROJETO FIREBASE ---
 
-1- Instalar o Node.js ( https://nodejs.org/ )
+1- Instalar o Node.js ( https://nodejs.org/ ):
    - Depois da instalação, abra seu terminal e digite `node -v` e `npm -v` para checar.
 
 2- Instalar as ferramentas do Firebase globalmente no computador:
-
    	npm install -g firebase-tools
 
 3- Fazer login na conta Google através do terminal:
-
    	firebase login
 
-4- Atualize o npm
+4- Atualize o npm:
 	npm install -g npm@latest
 
 
-5- Criar o projeto frontend (React + Vite) DENTRO da pasta principal:
-   (OBS: O ponto "." no final é importante, ele diz para criar na pasta atual)
-
+5- Criar o projeto frontend (React + Vite):
    	npm create vite@latest crypchat-firebase -- --template react
 
 6- Instalar as dependências do projeto:
@@ -29,8 +25,8 @@
 
    npm install -D tailwindcss postcss autoprefixer
    npx tailwindcss init -p
+	OBS: npx tailwindcss init -p causou problemas no meu ambiente e a solução foi usar npm install -D tailwindcss@3 e 	depois npx tailwindcss init como segue no site https://v3.tailwindcss.com/docs/installation.
 
-   (Faça as configurações do Tailwind nos arquivos, como já fizemos)
    npm install react-router-dom crypto-js
 
 8- Iniciar o Firebase dentro do projeto (o passo mais importante!):
@@ -44,7 +40,7 @@
        - Hosting
      - Depois, ele vai pedir para conectar a um projeto Firebase (você pode criar um novo).
      - Ele vai perguntar sobre as configurações de cada serviço (pode usar as opções padrão por enquanto).
-     - Para Functions, escolha "JavaScript".
+     - Para Functions, escolha "TypeScript".
      - Para Hosting, ele perguntará qual o seu diretório público. Digite "dist".
      - Configurar como um single-page app? -> Yes
 

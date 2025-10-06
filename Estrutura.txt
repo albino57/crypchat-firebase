@@ -7,7 +7,7 @@ crypchat-firebase/	 # Raiz do projeto
 │
 ├── functions/          # Backend
 │   ├── node_modules/
-│   ├── index.js        # Ponto de entrada da Cloud Functions
+│   ├── src/index.ts # Ponto de entrada da Cloud Functions (em TypeScript)
 │   └── package.json    # Dependências SOMENTE do backend
 │
 ├── public/             # Arquivos estáticos do frontend (ícone, etc.)

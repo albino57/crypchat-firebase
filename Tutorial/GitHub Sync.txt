@@ -6,7 +6,7 @@
 
 	git add .
 
-	git commit -m "Versão 1.0: Aplicação de chat funcional"
+	git commit -m "Initial commit: Project setup..."
 
 	git branch -M main
 
