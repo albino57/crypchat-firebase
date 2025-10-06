@@ -1,0 +1,37 @@
+12:02 06/10/2025
+
+1- Para iniciar o ambiente de desenvolvimento local do Firebase, os "Emuladores":
+	
+	firebase emulators:start
+
+	OBS: Caso o comando 'firebase emulators:start' dê erro
+	<i  emulators: Shutting down emulators.
+	Error: Could not spawn `java -version`. Please make sure Java is installed and on your system PATH.>
+
+	1.1- Só precisamos instalar a JDK. No site https://adoptium.net/, baixe o JDK.
+		-Certifique-se que '"Modify Path variable", "Associate .jar" e "Set or override JAVA_HOME variable"' está 		selecionado com 'Will be installed on local hard drive'.
+		
+		-'JavaSoft (Oracle) registry keys' pode deixar como 'Entire feature will be unavailable'
+
+		[✓] Modify PATH variable
+		[✓] Associate .jar
+		[✓] Set or override JAVA_HOME variable
+		[X] JavaSoft (Oracle) registry keys
+
+
+2- Conectando o App React ao Firebase:
+	
+	2.1- Em console do firebase na google, acesse 'Configurações o projeto'.
+	2.2- Na aba "Geral", role para baixo até a seção "Seus apps"
+	2.3- Clique no ícone de aplicativo da web, que se parece com isto: </>
+	2.4- Dê um "Apelido do app" (pode ser "CrypChat Web") e clique em "Registrar app". Não precisa marcar a opção 		     "Configurar o Firebase Hosting".
+
+
+3- Copiando a Configuração, Criando o Arquivo Local e Instalando o Pacote do Firebase no Frontend:
+
+	3.1- Dentro da pasta src, crie um novo arquivo chamado 'firebaseConfig.js'
+	3.2- Copie todo o bloco de código que aparece no site.
+	3.3- Cole o código no arquivo 'firebaseConfig.js'
+	3.4- Abra um novo terminal e rode:
+		npm install firebase
+	
