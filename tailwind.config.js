@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class', //Habilita a estratégia de classe para temas
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,12 +8,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'background': '#f0f2f5', // Um cinza bem claro para o fundo
-        'surface': '#ffffff',    // Branco para as caixas e formulários
-        'primary': '#0b93f6',    // Um azul vibrante para botões e destaques
-        'primary-dark': '#0a84dc',// Um tom mais escuro do azul para o hover
-        'text-primary': '#1c1e21',  // Preto suave para textos principais
-        'text-secondary': '#65676b',// Cinza para textos secundários
+        'background': 'rgb(var(--color-background))',
+        'surface': 'rgb(var(--color-surface))',
+        'primary': 'rgb(var(--color-primary))',
+        'primary-dark': 'rgb(var(--color-primary-dark))',
+        'text-primary': 'rgb(var(--color-text-primary))',
+        'text-secondary': 'rgb(var(--color-text-secondary))',
       }
     },
   },

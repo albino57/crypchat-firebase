@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from './pages/ThemeManager.jsx'
 
 //--- INÍCIO DAS ADIÇÕES ---
 import { db } from './firebaseConfig' //Importa nossa conexão com o DB
@@ -17,8 +18,10 @@ if (import.meta.env.DEV) {//SE estiver no ambiente de DESENVOLVIMENTO
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>,
 )
