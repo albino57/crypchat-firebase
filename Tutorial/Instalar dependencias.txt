@@ -29,6 +29,8 @@
 
    npm install react-router-dom crypto-js
 
+   npm install react-textarea-autosize
+
 8- Iniciar o Firebase dentro do projeto (o passo mais importante!):
    firebase init
 
