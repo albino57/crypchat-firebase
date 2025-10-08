@@ -15,7 +15,7 @@ function LoginPage() {
 
   return (
 
-    <div className="flex justify-center items-center min-h-screen bg-background">
+    <div className="flex justify-center items-center min-h-dvh bg-background">
 
       <div className="relative bg-surface p-10 rounded-lg shadow-lg w-full max-w-sm text-center">
 
