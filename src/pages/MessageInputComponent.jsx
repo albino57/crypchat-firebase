@@ -10,19 +10,17 @@ const SendIcon = () => (
 
 function MessageInputComponent() {
   return (
-    // O container geral que ocupa todo o espaço do grid (100px de altura)
-    // Usamos flex para centralizar a área de texto verticalmente
+      //flex centraliza a área de texto verticalmente
     <div className="bg-surface h-full p-2 flex items-end border-t border-gray-200 dark:border-gray-700 gray:border-gray-600 transition-colors">
       
-      {/* Usamos 'relative' para poder posicionar o botão de envio 'dentro' da área de texto */}
-      <div className="relative w-full">
+      <div className="relative w-full"> {/*'relative' para poder posicionar o botão de envio 'dentro' da área de texto */}
         
         {/* 2. Substitua a tag <textarea> por <TextareaAutosize> */}
         <TextareaAutosize
           placeholder="Digite sua mensagem..."
           className="w-full p-3 pr-14 rounded-lg resize-none bg-background border border-gray-300 dark:border-gray-700 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary transition-colors"
-          minRows={2} // Começa com a altura de 2 linhas
-          maxRows={8} // Cresce até no máximo 6 linhas, depois ativa o scroll
+          minRows={2} //Começa com a altura de 2 linhas
+          maxRows={8} //Cresce até no máximo 8 linhas, depois ativa o scroll.
         />
 
         {/*Botão de Enviar posicionado de forma absoluta*/}
