@@ -1,11 +1,14 @@
-import {SunIcon, SunMoonIcon, MoonIcon} from './SunMoonIcon.jsx';
+import React, { useState } from 'react';
+import { SunIcon, SunMoonIcon, MoonIcon } from './SunMoonIcon.jsx';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from './ThemeManager.jsx';
+import RegisterModalComponent from './RegisterModalComponent.jsx';
 
 //↓-------------- ↓LOGIN PAGE↓ --------------↓
 function LoginPage() {
   const navigate = useNavigate();
   const { theme, cycleTheme } = useTheme();
+  const [isRegisterModalOpen, setRegisterModalOpen] = useState(false); //Cria um estado para controlar se o modal está aberto ou fechado
 
   const handleLogin = (event) => {
     event.preventDefault(); // Impede que a página recarregue
@@ -14,18 +17,16 @@ function LoginPage() {
   };
 
   return (
-
     <div className="flex justify-center items-center min-h-dvh bg-background">
-
       <div className="relative bg-surface p-10 rounded-lg shadow-lg w-full max-w-sm text-center">
 
         {/*Div do tema*/}
         <div className="absolute top-4 right-4">
           <button onClick={cycleTheme} title="Mudar Tema" className="w-8 h-8 rounded-full flex items-center justify-center transition-colors">
             {/*Renderiza um ícone diferente dependendo do tema atual */}
-            {theme === 'light' && <SunIcon/>}
-            {theme === 'gray'  && <SunMoonIcon/>}
-            {theme === 'dark'  && <MoonIcon/>}
+            {theme === 'light' && <SunIcon />}
+            {theme === 'gray' && <SunMoonIcon />}
+            {theme === 'dark' && <MoonIcon />}
           </button>
         </div>
 
@@ -63,12 +64,21 @@ function LoginPage() {
           </button>
         </form>
 
-        <div className="mt-6">
-          <a href="#" className="text-sm text-text-secondary hover:underline">
+        <div className="mt-6"> {/*DIV do MODAL */}
+          <a href="#"
+          onClick={(e) => {
+            e.preventDefault(); //Impede que a página "pule" para o topo
+            setRegisterModalOpen(true); //Muda o estado para 'true', fazendo o modal aparecer
+          }}
+            className="text-sm text-text-secondary hover:underline">
             Solicitar Acesso
           </a>
         </div>
       </div>
+      <RegisterModalComponent
+        isOpen={isRegisterModalOpen}
+        onClose={() => setRegisterModalOpen(false)}
+      />
     </div>
   );
 }
