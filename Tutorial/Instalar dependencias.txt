@@ -46,3 +46,8 @@
      - Para Hosting, ele perguntará qual o seu diretório público. Digite "dist".
      - Configurar como um single-page app? -> Yes
 
+9- Instalar outras dependências:
+	No diretório functions do projeto instale:
+	npm install firebase-admin@latest
+	
+
