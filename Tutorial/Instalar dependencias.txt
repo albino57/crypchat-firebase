@@ -47,7 +47,10 @@
      - Configurar como um single-page app? -> Yes
 
 9- Instalar outras dependências:
-	No diretório functions do projeto instale:
-	npm install firebase-admin@latest
+	9.1- No diretório functions do projeto instale:
+		npm install firebase-admin@latest
+
+	9.2 Na raiz do projeto instale:
+		npm install react-firebase-hooks
 	
 

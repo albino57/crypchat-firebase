@@ -1,11 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SunIcon, SunMoonIcon, MoonIcon } from './SunMoonIcon.jsx';
 import { useTheme } from './ThemeManager.jsx';
+import { auth } from '../firebaseConfig';
+import { signOut } from 'firebase/auth'; //Importa as ferramentas do Auth e signOut
+import { useAuthState } from 'react-firebase-hooks/auth'; //Importa o hook de estado do Auth
+
 
 function HeaderComponent({ isCollapsed, onToggle }) {
   const { theme, cycleTheme } = useTheme();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  
+  const [currentUser] = useAuthState(auth); //Usa o hook para descobrir quem está logado, no caso o nome de usuário da pessoa que logar.
 
 
   useEffect(() => { //Adiciona um ouvinte de cliques na página inteira
@@ -22,6 +28,16 @@ function HeaderComponent({ isCollapsed, onToggle }) {
     };
   }, [dropdownRef]); //O efeito depende da referência do dropdown
 
+  //Função de logout
+  const handleLogout = async () => {
+    try {
+      setDropdownOpen(false); //Fecha o menu
+      await signOut(auth); //O ProtectedRouteComponent vai perceber a mudança e redirecionar.
+      console.log("Usuário deslogado com sucesso.");
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+    }
+  };
 
   return (
     <header className="flex justify-between items-center h-full px-4 bg-surface border-b border-gray-200 dark:border-gray-700 gray:border-gray-600 transition-colors">
@@ -58,7 +74,7 @@ function HeaderComponent({ isCollapsed, onToggle }) {
           className="flex items-center gap-2 p-1 rounded-md hover:bg-background"
         >
 
-          <span className="text-sm text-text-secondary font-bold">Usuário</span>
+          <span className="text-sm text-text-secondary font-bold">{currentUser ? currentUser.displayName : 'Usuário'}</span>
           {/*Ícone de seta para baixo*/}
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" /></svg>
         </button>
@@ -67,12 +83,12 @@ function HeaderComponent({ isCollapsed, onToggle }) {
         {isDropdownOpen && (
           <div className="absolute right-0 mt-2 w-48 bg-surface rounded-md shadow-lg border border-gray-200 dark:border-gray-700 gray:border-gray-600 z-10">
             {/*<hr className="border-gray-200 dark:border-gray-700 gray:border-gray-600" />*/}{/*AQUI SERÁ USADO DEPOIS PARA MAIS COISAS*/}
-            <a href="#" className="block px-4 py-2 text-sm text-red-500 hover:bg-background">Sair</a>
+            <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-background">
+              Sair
+            </button>
           </div>
         )}
-
       </div>
-
     </header>
   );
 }

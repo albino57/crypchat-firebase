@@ -5,6 +5,7 @@ import { getFunctions, httpsCallable } from 'firebase/functions'; //Importa as f
 
 function RegisterModalComponent({ isOpen, onClose }) {
 
+    const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -23,7 +24,7 @@ function RegisterModalComponent({ isOpen, onClose }) {
 
             //Chama a função no backend, enviando os dados
             console.log(`Enviando para o backend: ${email}`);
-            const result = await createUser({ email: email, password: password });
+            const result = await createUser({ nome: nome, email: email, password: password });
 
             console.log("Resposta do backend:", result.data);
             alert('Sucesso! Verifique os consoles do navegador e do emulador.');
@@ -51,8 +52,19 @@ function RegisterModalComponent({ isOpen, onClose }) {
                         <label className="block mb-1 text-sm font-medium text-text-primary text-left"></label>
                         <input
                             type="text"
-                            placeholder="👤Crie o Usuário"
-                            value={email} //Conecta este input ao estado 'usuario'
+                            placeholder="👤Seu Nome"
+                            value={nome} //Conecta este input ao estado 'usuario'
+                            onChange={(e) => setNome(e.target.value)}
+                            className="w-full p-3 border border-gray-300 rounded-md bg-gray-50 dark:bg-gray-800 text-text-primary placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block mb-1 text-sm font-medium text-text-primary text-left"></label>
+                        <input
+                            type="email"
+                            placeholder="✉️Seu E-mail"
+                            value={email} //Conecta este input ao estado 'email'
                             onChange={(e) => setEmail(e.target.value)}
                             className="w-full p-3 border border-gray-300 rounded-md bg-gray-50 dark:bg-gray-800 text-text-primary placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
                             required
@@ -62,7 +74,7 @@ function RegisterModalComponent({ isOpen, onClose }) {
                         <label className="block mb-1 text-sm font-medium text-text-primary text-left"></label>
                         <input
                             type="password"
-                            placeholder="🔑Crie a Senha"
+                            placeholder="🔑Sua a Senha"
                             value={password} //Conecta este input ao estado 'password'
                             onChange={(e) => setPassword(e.target.value)}
                             className="w-full p-3 border border-gray-300 rounded-md bg-gray-50 dark:bg-gray-800 text-text-primary placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
