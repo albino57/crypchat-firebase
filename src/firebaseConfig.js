@@ -17,7 +17,6 @@ const app = initializeApp(firebaseConfig); //Inicializar o Firebase
 const auth = getAuth(app);
 const db = getFirestore(app); //Inicializar o Firestore e exportá-lo para uso em outros arquivos
 
-
 //Conecta aos emuladores SE estivermos em ambiente de desenvolvimento
 if (import.meta.env.DEV) {
   connectAuthEmulator(auth, "http://127.0.0.1:9099");

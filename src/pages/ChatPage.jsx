@@ -36,7 +36,7 @@ function ChatPage() {
         }
     }, [currentUser, selectedContact]); //Roda de novo se o usuário logado ou o contato mudar
 
-    const toggleSidebar = () => { //Função para alternar o estado
+    const toggleSidebar = () => { //Função para alternar o estado da SideBar
         setIsSidebarCollapsed(!isSidebarCollapsed);
     };
 
