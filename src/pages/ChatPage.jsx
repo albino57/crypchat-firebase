@@ -8,6 +8,7 @@ import SidebarComponent from './SidebarComponent.jsx';
 import MessageInputComponent from './MessageInputComponent.jsx';
 import MessageAreaComponent from './MessageAreaComponent.jsx';
 import FooterComponent from './FooterComponent.jsx';
+import NotificationHandlerComponent from './NotificationHandlerComponent.jsx';
 
 const auth = getAuth(app); //Inicializa o serviço de autenticação
 
@@ -18,22 +19,17 @@ function ChatPage() {
     const [currentUser] = useAuthState(auth); //Identifica e pega o usuário logado
     const [chatId, setChatId] = useState(null); //Estado para guardar o ID do chat
 
-    //Pede permissão para notificações assim que a página de chat carrega
-    useEffect(() => {
-        if ("Notification" in window && Notification.permission !== "granted") {
-            Notification.requestPermission();
-        }
-    }, []); //O array vazio [] garante que este código só rode uma vez
-
     //Efeito que roda quando o contato selecionado muda
     useEffect(() => {
+        console.log("ANTES DO IF:");
         if (currentUser && selectedContact) {
             //Lógica para criar um ID de chat único e consistente
             const uids = [currentUser.uid, selectedContact.id].sort();
             const combinedId = uids.join('_');
             setChatId(combinedId);
-            //console.log("ID da sala de chat privada:", combinedId); //Para poder ver funcionando
+            console.log("ID da sala de chat privada:", combinedId); //Para poder ver funcionando
         }
+        console.log("DEPOIS DO IF:");
     }, [currentUser, selectedContact]); //Roda de novo se o usuário logado ou o contato mudar
 
     const toggleSidebar = () => { //Função para alternar o estado da SideBar
@@ -53,6 +49,9 @@ function ChatPage() {
     return (
         //Chamada de todos os Components↓↓
         <div className="flex justify-center items-center h-dvh bg-background">
+            {/**Chama a função que solicita permissão e obtem o token*/}
+            <NotificationHandlerComponent currentUser={currentUser}/>
+
             <div className={`w-full h-full md:w-[768px] md:h-[80vh] md:rounded-lg md:shadow-lg grid grid-rows-[50px_1fr_auto]
                 overflow-hidden transition-all duration-300 ${isSidebarCollapsed ? 'grid-cols-[0px_1fr]' : 'grid-cols-[1fr_1fr] sm:grid-cols-[1fr_2fr]'}`}>{/*sm:grid-cols-[1fr_2fr] para telas maiores que 640px */}
 
@@ -77,7 +76,7 @@ function ChatPage() {
                 </div>
 
                 <div className="bg-surface col-start-2">
-                    <MessageInputComponent chatId={chatId} />
+                    <MessageInputComponent chatId={chatId} selectedContact={selectedContact} />
                 </div>
             </div>
         </div>

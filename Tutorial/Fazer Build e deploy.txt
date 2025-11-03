@@ -1,0 +1,17 @@
+20:55 15/10/2025
+
+--- Para fazer deploy ---
+
+- Primeiro, construa a aplicação:
+	npm run build
+
+- Segundo, faça o deploy completo:
+	firebase deploy
+
+- Terceiro, com o tempo faça apenas deploy do que você editar:
+
+	Se for frontend:
+		firebase deploy --only hosting
+
+	Se for backend:
+		firebase deploy --only functions

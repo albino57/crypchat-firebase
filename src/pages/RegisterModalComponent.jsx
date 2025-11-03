@@ -34,7 +34,6 @@ function RegisterModalComponent({ isOpen, onClose }) {
             console.error("Erro ao chamar a Cloud Function:", err);
             setError("Ocorreu um erro esquisito ao registrar. Tente mais uma vez outra hora.");
         }
-        // --- FIM DA MUDANÇA ---
     };
 
     //-----↑ Conexão Cloud Functions ↑-----

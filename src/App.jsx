@@ -4,8 +4,7 @@ import LoginPage from './pages/LoginPage';
 
 const ChatPage = lazy(() => import('./pages/ChatPage')); //Importa a ChatPage em modo preguiçoso 
 
-
-import ProtectedRouteComponent from './pages/ProtectedRouteComponent.jsx'; //Importa sua rota protegida
+import ProtectedRouteComponent from './pages/ProtectedRouteComponent.jsx'; //Importa rota protegida
 
 function App() {
   return (

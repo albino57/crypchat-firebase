@@ -42,24 +42,6 @@ function MessageAreaComponent({ selectedContact, chatId }) {
     //Usa o useEffect para chamar a função sempre que as mensagens mudarem
     useEffect(() => {
         scrollToBottom();
-
-        if (!messagesSnapshot || document.hasFocus()) return; //Se ainda não carregou as mensagens, ou se a janela do navegador já está em foco.
-
-        const lastMessageDoc = messagesSnapshot.docs[messagesSnapshot.docs.length - 1]; //Pega a última mensagem da lista
-        if (lastMessageDoc) {
-            const lastMessage = lastMessageDoc.data();
-
-            //Se a última mensagem NÃO foi enviada pelo usuário atual
-            if (lastMessage.uid !== currentUser?.uid) { 
-                if (Notification.permission === "granted") { //E se temos permissão para notificar
-                    new Notification(`Nova mensagem de ${selectedContact.name}`, {
-                        body: lastMessage.text,
-                        icon: '/logo.png', //Usa o logo da sua pasta public
-                    });
-                }
-            }
-        }
-
     }, [messagesSnapshot, currentUser, selectedContact]); //Roda sempre que as mensagens mudarem
 
     return (

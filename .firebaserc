@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "crypchat-fb23e"
-  }
+    "default": "crypchatweb"
+  },
+  "targets": {},
+  "etags": {}
 }

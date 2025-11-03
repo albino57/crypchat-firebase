@@ -52,5 +52,9 @@
 
 	9.2 Na raiz do projeto instale:
 		npm install react-firebase-hooks
-	
 
+	9.3 Na raiz do projeto instale:
+		npm install firebase-admin
+	
+	9.4 Na raiz do projeto instale:
+		npm install firebase-functions

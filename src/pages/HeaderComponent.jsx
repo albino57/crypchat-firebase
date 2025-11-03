@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SunIcon, SunMoonIcon, MoonIcon } from './SunMoonIcon.jsx';
 import { useTheme } from './ThemeManager.jsx';
-import { auth } from '../firebaseConfig';
+import { getFunctions, httpsCallable } from "firebase/functions";
+import { auth, app } from '../firebaseConfig';
 import { signOut } from 'firebase/auth'; //Importa as ferramentas do Auth e signOut
 import { useAuthState } from 'react-firebase-hooks/auth'; //Importa o hook de estado do Auth
 
+const functions = getFunctions(app);
+const deleteDeviceToken = httpsCallable(functions, 'deleteDeviceToken');
 
 function HeaderComponent({ isCollapsed, onToggle }) {
   const { theme, cycleTheme } = useTheme();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  
+
   const [currentUser] = useAuthState(auth); //Usa o hook para descobrir quem está logado, no caso o nome de usuário da pessoa que logar.
 
 
@@ -32,7 +35,14 @@ function HeaderComponent({ isCollapsed, onToggle }) {
   const handleLogout = async () => {
     try {
       setDropdownOpen(false); //Fecha o menu
-      await signOut(auth); //O ProtectedRouteComponent vai perceber a mudança e redirecionar.
+
+      //Limpa o Token no FIRESTORE
+      if (currentUser?.uid) {
+        await deleteDeviceToken({ userId: currentUser.uid });
+        console.log("Token do dispositivo limpo no servidor.");
+      }
+
+      await signOut(auth); //O ProtectedRouteComponent percebe a mudança e redirecionar.
       console.log("Usuário deslogado com sucesso.");
     } catch (error) {
       console.error("Erro ao fazer logout:", error);

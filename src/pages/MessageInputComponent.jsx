@@ -14,7 +14,7 @@ const SendIcon = () => (
     </svg>
 );
 
-function MessageInputComponent({ chatId }) {
+function MessageInputComponent({ chatId, selectedContact }) {
 
     const [text, setText] = useState(''); //Estado para guardar o texto da mensagem
     const [currentUser] = useAuthState(auth); //Pega o usuário atualmente logado
@@ -33,6 +33,8 @@ function MessageInputComponent({ chatId }) {
                 text: text,
                 createdAt: serverTimestamp(), //Pega a forma do Firebase de garantir que a hora da mensagem seja precisa
                 uid: currentUser.uid,       //O ID do usuário que enviou
+                recipientId: selectedContact.id, // O ID do destinatário da mensagem
+                senderName: currentUser.displayName || 'Usuário Anônimo', //Usa o displayName (ou um fallback seguro)
             });
 
             setText(''); //Limpa a caixa de texto após o envio
