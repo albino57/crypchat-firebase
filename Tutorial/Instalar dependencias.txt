@@ -39,7 +39,7 @@
      - "Which Firebase features do you want to set up?" -> Use a barra de espaço para selecionar:
        - Firestore
        - Functions
-       - Hosting
+       - Hosting (se for usar o firebase hosting :D, pode usar vercel que é outro comando)
      - Depois, ele vai pedir para conectar a um projeto Firebase (você pode criar um novo).
      - Ele vai perguntar sobre as configurações de cada serviço (pode usar as opções padrão por enquanto).
      - Para Functions, escolha "TypeScript".
@@ -47,6 +47,12 @@
      - Configurar como um single-page app? -> Yes
 
 9- Instalar outras dependências:
+	9.0- Se for usar Vercel instale:
+		npm install -g vercel
+
+	9.0.1- Loge no vercel
+		vercel login
+
 	9.1- No diretório functions do projeto instale:
 		npm install firebase-admin@latest
 
