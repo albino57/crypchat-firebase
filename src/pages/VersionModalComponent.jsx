@@ -1,8 +1,8 @@
 // src/pages/VersionModalComponent.jsx
 import React from 'react';
 
-export const APP_VERSION = "v0.7.1";
-export const APP_LastVersion = " 21/10/25 | v0.7.1-Implementada Modal de Versões...";
+export const APP_VERSION = "v0.8.0";
+export const APP_LastVersion = " 09/11/25 | v0.8.0-Sistema de notificação push finalizado...";
 
 //Exemplo: export const APP_LastVersion = " 21/10/25 | v0.7.1-Implementada Modal de Versões...";
 //<li>Implementada a Sessão Única Ativa (Logout automático via FCM).</li>
@@ -41,6 +41,14 @@ function VersionModalComponent({ isOpen, onClose }) { //O componente precisa rec
         <div className="max-h-80 overflow-y-auto pr-2 text-text-primary">
 
           {/* VERSÃO ATUAL */}
+
+          <div className="mb-4 p-3 bg-background rounded-md border border-gray-300 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-text-primary">v0.8.0</h3>
+            <p className="text-sm text-text-secondary italic">09 de Novembro de 2025</p>
+            <ul className="list-disc list-inside mt-2 text-sm ml-2">
+              <li>Finalizado sistema de notificação push para Windows, Android e iOS.</li>
+            </ul>
+          </div>
 
           <div className="mb-4 p-3 bg-background rounded-md border border-gray-300 dark:border-gray-700">
             <h3 className="text-lg font-semibold text-text-primary">v0.7.1</h3>

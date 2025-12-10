@@ -52,7 +52,7 @@ function HeaderComponent({ isCollapsed, onToggle }) {
   return (
     <header className="flex justify-between items-center h-full px-4 bg-surface border-b border-gray-200 dark:border-gray-700 gray:border-gray-600 transition-colors">
 
-      {/*-----Lado Esquerdo: Título-----*/}
+      {/*-----↓ Lado Esquerdo: Título ↓-----*/}
       <div className="flex items-center gap-3">
         <button onClick={onToggle} title="Alternar Sidebar" className="flex items-center gap-1 p-1 rounded-md hover:bg-background transition-colors">
           <h1 className="text-xl font-bold text-primary">CrypChat</h1>
@@ -62,8 +62,9 @@ function HeaderComponent({ isCollapsed, onToggle }) {
         </button>
 
       </div>
+      {/*-----↑ Lado Esquerdo: Título ↑-----*/}
 
-      {/*-----Centro: Tema-----*/}
+      {/*-----↓ Centro: Tema ↓-----*/}
       <div>
         <div>
           <button onClick={cycleTheme} title="Mudar Tema" className="w-8 h-8 rounded-full flex items-center justify-center transition-colors">
@@ -74,8 +75,9 @@ function HeaderComponent({ isCollapsed, onToggle }) {
           </button>
         </div>
       </div>
+      {/*-----↑ Centro: Tema ↑-----*/}
 
-      {/*-----Lado Direito: Usuário e DropDown-----*/}
+      {/*-----↓ Lado Direito: Usuário e DropDown ↓-----*/}
       <div className="relative" ref={dropdownRef}> {/**ref={dropdownRef} precisa estar aqui para o React sabe que essa é a Div que deve ser monitorada*/}
 
         {/*Botão que abre/fecha o menu */}
@@ -99,6 +101,7 @@ function HeaderComponent({ isCollapsed, onToggle }) {
           </div>
         )}
       </div>
+      {/*-----↑ Lado Direito: Usuário e DropDown ↑-----*/}
     </header>
   );
 }

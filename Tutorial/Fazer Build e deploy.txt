@@ -1,6 +1,6 @@
 20:55 15/10/2025
 
---- Para fazer deploy ---
+--- Para fazer deploy Apenas Google---
 
 - Primeiro, construa a aplicação:
 	npm run build
@@ -12,6 +12,20 @@
 
 	Se for frontend:
 		firebase deploy --only hosting
+
+	Se for backend:
+		firebase deploy --only functions
+-----------------------------------------------------------------------------------
+
+--- Para fazer deploy Google e Vercel---
+
+- Construa a aplicação:
+	npm run build
+
+- Faça apenas deploy do que você editar:
+
+	Se for frontend:
+		vercel --prod
 
 	Se for backend:
 		firebase deploy --only functions
